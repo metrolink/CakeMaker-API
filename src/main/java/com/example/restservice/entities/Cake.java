@@ -1,11 +1,11 @@
-package com.example.restservice;
+package com.example.restservice.entities;
 
-public class Greeting {
+public class Cake {
 
 	private final long id;
 	private final String content;
 
-	public Greeting(long id, String content) {
+	public Cake(long id, String content) {
 		this.id = id;
 		this.content = content;
 	}
