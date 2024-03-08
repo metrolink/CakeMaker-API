@@ -1,20 +1,34 @@
 package com.example.restservice.entities;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
+
+@Getter
+@Setter
+@Entity
+@NoArgsConstructor
 public class Cake {
 
-	private final long id;
-	private final String content;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	private String cakeName;
 
-	public Cake(long id, String content) {
+	private String ingredients;
+
+	public Cake(long id, String ingredients) {
 		this.id = id;
-		this.content = content;
+		this.ingredients = ingredients;
 	}
 
 	public long getId() {
 		return id;
 	}
 
-	public String getContent() {
-		return content;
+	public String getIngredients() {
+		return ingredients;
 	}
 }

@@ -7,6 +7,6 @@ import lombok.Builder;
 @Builder
 public class CakeDTO {
 
-    private String Cake;
+    private String cakeName;
     private String Ingredients;
 }
