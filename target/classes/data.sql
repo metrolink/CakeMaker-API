@@ -9,4 +9,4 @@ INSERT INTO cake (id, ingredients) VALUES (1, 'baking powder');
 INSERT INTO cake (id, ingredients) VALUES (2, 'flour');
 INSERT INTO cake (id, ingredients) VALUES (3, 'milk');
 INSERT INTO cake (id, ingredients) VALUES (4, 'sugar');
-INSERT INTO cake (id, ingredients) VALUES (5, 'USA');
+INSERT INTO cake (id, ingredients) VALUES (5, 'Lemon');

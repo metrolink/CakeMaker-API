@@ -18,17 +18,4 @@ public class Cake {
 	private String cakeName;
 
 	private String ingredients;
-
-	public Cake(long id, String ingredients) {
-		this.id = id;
-		this.ingredients = ingredients;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public String getIngredients() {
-		return ingredients;
-	}
 }

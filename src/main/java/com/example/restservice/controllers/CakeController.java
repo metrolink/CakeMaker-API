@@ -22,6 +22,6 @@ public class CakeController {
 
 	@GetMapping("/Cake")
 	public Cake greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return new Cake(counter.incrementAndGet(), String.format(template, name));
+		return new Cake();
 	}
 }

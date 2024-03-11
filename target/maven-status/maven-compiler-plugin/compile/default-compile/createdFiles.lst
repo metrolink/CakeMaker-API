@@ -1,4 +1,6 @@
+com\example\restservice\services\CakeService.class
 com\example\restservice\entities\Cake.class
 com\example\restservice\dto\CakeDTO$CakeDTOBuilder.class
 com\example\restservice\controllers\CakeController.class
 com\example\restservice\dto\CakeDTO.class
+com\example\restservice\repository\CakeRepository.class
