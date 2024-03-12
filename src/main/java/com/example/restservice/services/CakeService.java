@@ -7,6 +7,7 @@ import com.example.restservice.entities.Cake;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Objects;
 
 @Component
@@ -15,17 +16,11 @@ public class CakeService {
 
     private final CakeRepository cakeRepository;
 
-    public Boolean createCake(CakeDTO cakeDTO){
-        if(Objects.nonNull(cakeRepository.findByName(cakeDTO.getCakeName()))){
-            return false;
-        }
+    public List<Cake> getAllCakes(){
+        return cakeRepository.findAll();
+    }
 
-        Cake newCake = new Cake();
-        newCake.setCakeName(cakeDTO.getCakeName());
-
-        cakeRepository.save(newCake);
-        return true;
-
-
+    public void save(Cake c, String name){
+        cakeRepository.save(c);
     }
 }

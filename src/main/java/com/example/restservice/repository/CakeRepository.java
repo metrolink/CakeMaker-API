@@ -10,6 +10,9 @@ import java.util.Collection;
 @Repository
 public interface CakeRepository extends JpaRepository<Cake,Long> {
 
-    @Query("select ll from Cake ll where ll.cakeName=:cakeName")
+    @Query("select c from Cake c where c.cakeName=:cakeName")
     public Cake findByName(String cakeName);
+
+    //@Query("select ca from Cake where ca.id=:id")
+    //public Cake getCakeObject(Long id);
 }
