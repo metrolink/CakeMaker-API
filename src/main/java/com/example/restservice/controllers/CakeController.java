@@ -10,6 +10,7 @@ import com.example.restservice.entities.Cake;
 import com.example.restservice.repository.CakeRepository;
 import com.example.restservice.services.CakeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,8 +31,17 @@ public class CakeController {
 		return ResponseEntity.ok(cakeRepository.findAll());
 	}
 
-	/*@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Cake> createCake(@RequestBody CakeDTO dto, Principal principal){
-		var cake = mapToCake(dto);
-	}*/
+		Cake cake = mapToCake(dto);
+		cakeService.save(cake, principal.getName());
+		return ResponseEntity.status(HttpStatus.CREATED).build();
+	}
+
+	private Cake mapToCake(CakeDTO dto){
+		Cake cake = new Cake();
+		cake.setCakeName(dto.getCakeName());
+		cake.setIngredients(dto.getIngredients());
+		return cake;
+	}
 }
