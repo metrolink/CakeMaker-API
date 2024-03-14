@@ -1,5 +1,6 @@
 package com.example.restservice.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,4 +19,9 @@ public class Cake {
 	private String cakeName;
 
 	private String ingredients;
+
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn()
+	@JsonBackReference
+	private Cake cake;
 }
