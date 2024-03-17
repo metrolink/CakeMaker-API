@@ -1,10 +1,16 @@
+com\example\restservice\controllers\CustomerController.class
+com\example\restservice\services\CustomerService.class
+com\example\restservice\entities\Customer.class
 com\example\restservice\controllers\CakeController.class
 com\example\restservice\entities\Baker.class
 com\example\restservice\dto\BakerDTO.class
 com\example\restservice\controllers\BakerController.class
 com\example\restservice\repository\BakerRepository.class
 com\example\restservice\services\CakeService.class
+com\example\restservice\dto\CustomerDTO$CustomerDTOBuilder.class
+com\example\restservice\dto\CustomerDTO.class
 com\example\restservice\entities\Cake.class
+com\example\restservice\repository\CustomerRepository.class
 com\example\restservice\dto\CakeDTO$CakeDTOBuilder.class
 com\example\restservice\dto\BakerDTO$BakerDTOBuilder.class
 com\example\restservice\dto\CakeDTO.class

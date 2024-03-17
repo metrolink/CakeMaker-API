@@ -1,7 +1,8 @@
 package com.example.restservice.controllers;
 
 
-import com.example.restservice.entities.Cake;
+
+import com.example.restservice.entities.Customer;
 import com.example.restservice.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -23,7 +24,7 @@ public class CustomerController {
     private CustomerRepository customerRepository;
 
     @GetMapping
-    public ResponseEntity<List<Cake>> getCakes() {
+    public ResponseEntity<List<Customer>> getCakes() {
         return ResponseEntity.ok(customerRepository.findAll());
     }
 
