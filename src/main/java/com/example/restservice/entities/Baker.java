@@ -30,4 +30,10 @@ public class Baker {
             cascade = CascadeType.PERSIST
     )
     private List<Cake> cakes = new ArrayList<>();
+
+    @OneToMany(
+            mappedBy = "customer",
+            cascade = CascadeType.PERSIST
+    )
+    private List<Customer> customers = new ArrayList<>();
 }
