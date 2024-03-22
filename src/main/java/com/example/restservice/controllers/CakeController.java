@@ -31,11 +31,27 @@ public class CakeController {
 		return ResponseEntity.ok(cakeRepository.findAll());
 	}
 
+	@GetMapping("/personal")
+	public ResponseEntity<List<Cake>> myCakes(Principal principal){
+		List<Cake> myCakes = cakeService.getCakeObjects(principal.getName());
+		return ResponseEntity.ok(myCakes);
+	}
+
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Cake> createCake(@RequestBody CakeDTO dto, Principal principal){
 		Cake cake = mapToCake(dto);
 		cakeService.save(cake, principal.getName());
 		return ResponseEntity.status(HttpStatus.CREATED).build();
+	}
+
+	@DeleteMapping("/delete/{BakerID}")
+	public ResponseEntity<?> deleteCake(@PathVariable Long cakeID){
+		Cake cake = cakeRepository.getById(cakeID);
+		cakeRepository.delete(cake);
+		if(Objects.isNull(cake)){
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.status(HttpStatus.OK).build();
 	}
 
 	private Cake mapToCake(CakeDTO dto){

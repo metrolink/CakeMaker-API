@@ -11,8 +11,8 @@ import java.util.Collection;
 public interface CakeRepository extends JpaRepository<Cake,Long> {
 
     @Query("select c from Cake c where c.cakeName=:cakeName")
-    public Cake findByName(String cakeName);
+    public Collection<Cake> findByName(String cakeName);
 
-    //@Query("select ca from Cake where ca.id=:id")
-    //public Cake getCakeObject(Long id);
+    @Query("select ca from Cake ca where ca.id=:id")
+    public Cake getCakeObject(Long id);
 }

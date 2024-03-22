@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -22,5 +23,9 @@ public class CakeService {
 
     public void save(Cake c, String name){
         cakeRepository.save(c);
+    }
+
+    public List<Cake> getCakeObjects(String name) {
+        return cakeRepository.findByName(name).stream().collect(Collectors.toList());
     }
 }
