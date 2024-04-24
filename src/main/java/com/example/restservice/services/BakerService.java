@@ -29,4 +29,6 @@ public class BakerService {
         bakerRepository.save(baker);
         return true;
     }
+
+    public void save(Baker b, String name){bakerRepository.save(b);}
 }

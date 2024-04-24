@@ -1,7 +1,9 @@
 package com.example.restservice.controllers;
 
 import com.example.restservice.dto.BakerDTO;
+import com.example.restservice.dto.CakeDTO;
 import com.example.restservice.entities.Baker;
+import com.example.restservice.entities.Cake;
 import com.example.restservice.repository.BakerRepository;
 import com.example.restservice.services.BakerService;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,6 +46,13 @@ public class BakerController {
         return ResponseEntity.ok(responseBody);
     }
 
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Cake> createCake(@RequestBody BakerDTO dto, Principal principal){
+        Baker baker = maptoBaker(dto);
+        bakerService.save(baker, principal.getName());
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
     @DeleteMapping("/delete/{bakerID}")
     public ResponseEntity<?> DeleteBaker(@PathVariable Long bakerID){
         Baker b = bakerRepository.getById(bakerID);
@@ -52,4 +62,14 @@ public class BakerController {
         }
         return ResponseEntity.status(HttpStatus.OK).build();
     }
+
+    private Baker maptoBaker(BakerDTO dto){
+        Baker baker = new Baker();
+        baker.setName(dto.getName());
+        baker.setPhone(dto.getPhone());
+        baker.setEmail(dto.getEmail());
+        baker.setCakes(dto.getCakes());
+        return baker;
+    }
+
 }
