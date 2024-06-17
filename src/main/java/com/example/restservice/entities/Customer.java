@@ -1,11 +1,14 @@
 package com.example.restservice.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,8 +21,15 @@ public class Customer {
     private long id;
 
     private String name;
-    private String adress;
+    private String address;
     private String phone;
+
+    @OneToMany(
+            mappedBy = "customer",
+            cascade = CascadeType.PERSIST
+    )
+    @JsonManagedReference
+    private List<Cake> order = new ArrayList<>();
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn()

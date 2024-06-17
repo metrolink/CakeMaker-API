@@ -24,4 +24,8 @@ public class Cake {
 	@JoinColumn()
 	@JsonBackReference
 	private Cake cake;
+
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JsonBackReference
+	private Customer customer;
 }
